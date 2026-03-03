@@ -21,14 +21,22 @@ namespace FirstApi.Mappers
             };
         }
 
-        public static Comment ToCommentFromCreateDto(this Comment commentDto)
+        public static Comment ToCommentFromCreate(this CreateCommentDto commentDto, int stockId)
         {
             return new Comment
             {
                 Title = commentDto.Title,
                 Content = commentDto.Content,
-                CreatedOn = commentDto.CreatedOn,
-                StockId = commentDto.StockId  
+                StockId = stockId
+            };
+        }
+
+        public static Comment ToCommentFromUpdate(this UpdateCommentRequestDto commentDto)
+        {
+            return new Comment
+            {
+                Title = commentDto.Title,
+                Content = commentDto.Content
             };
         }
     }

@@ -13,6 +13,7 @@ namespace FirstApi.Repository
     public class StockRepository : IStockRepository
     {
         private readonly ApplicationDBContext _context;
+
         public StockRepository(ApplicationDBContext context)
         {
             _context = context;
@@ -72,6 +73,10 @@ namespace FirstApi.Repository
 
             return stockModel;
         }
-        
+
+        public Task<bool> StockExists(int id)
+        {
+            return _context.Stocks.AnyAsync(s => s.Id == id);
+        }
     }
 }
