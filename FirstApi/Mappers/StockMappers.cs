@@ -20,7 +20,7 @@ namespace FirstApi.Mappers
                 LastDividend = stockModel.LastDividend,
                 MarketCap = stockModel.MarketCap,
                 Purchase = stockModel.Purchase,
-
+                Comments = stockModel.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
 
