@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FirstApi.Data;
 using FirstApi.Dtos.Stock;
+using FirstApi.Helpers;
 using FirstApi.Interfaces;
 using FirstApi.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -24,12 +25,13 @@ namespace FirstApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult> GetAll([FromQuery] QueryObject query)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var stocks = await _stockRepo.GetAllAsync();
+            var stocks = await _stockRepo.GetAllAsync(query);
+            
             var stocksDto = stocks.Select(s => s.ToStockDto());
 
             return Ok(stocksDto);
