@@ -140,3 +140,5 @@ D:\Movidas Backend\firstDotNetAPI\FirstApi\bin\Debug\net8.0\Microsoft.AspNetCore
 D:\Movidas Backend\firstDotNetAPI\FirstApi\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Movidas Backend\firstDotNetAPI\FirstApi\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Movidas Backend\firstDotNetAPI\FirstApi\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+D:\Movidas Backend\firstDotNetAPI\FirstApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Movidas Backend\firstDotNetAPI\FirstApi\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
