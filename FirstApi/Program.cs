@@ -2,6 +2,7 @@ using FirstApi.Data;
 using FirstApi.Interfaces;
 using FirstApi.Models;
 using FirstApi.Repository;
+using FirstApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Options;
@@ -47,7 +48,6 @@ builder.Services.AddAuthentication(options =>
 
 }).AddJwtBearer(options =>
 {
-#pragma warning disable CS8604 // Possible null reference argument.
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -59,11 +59,11 @@ builder.Services.AddAuthentication(options =>
             System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
         )
     };
-#pragma warning restore CS8604 // Possible null reference argument.
 });
 
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
