@@ -8,6 +8,6 @@ namespace FirstApi.Models
 {
     public class AppUser : IdentityUser
     {
-        
+        public List<Portfolio> Porfolios {get; set; } = new List<Portfolio>();
     }
 }
