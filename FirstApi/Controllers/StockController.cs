@@ -7,6 +7,7 @@ using FirstApi.Dtos.Stock;
 using FirstApi.Helpers;
 using FirstApi.Interfaces;
 using FirstApi.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ namespace FirstApi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> GetAll([FromQuery] QueryObject query)
         {
             if(!ModelState.IsValid)
