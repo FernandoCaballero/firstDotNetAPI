@@ -27,12 +27,12 @@ namespace FirstApi.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult> GetAll([FromQuery] QueryObject query)
+        public async Task<ActionResult> GetAll([FromQuery] StockQueryObject queryObj)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var stocks = await _stockRepo.GetAllAsync(query);
+            var stocks = await _stockRepo.GetAllAsync(queryObj);
             
             var stocksDto = stocks.Select(s => s.ToStockDto()).ToList();
 

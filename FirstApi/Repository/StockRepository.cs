@@ -21,7 +21,7 @@ namespace FirstApi.Repository
         }
 
 
-        public async Task<List<Stock>> GetAllAsync(QueryObject query)
+        public async Task<List<Stock>> GetAllAsync(StockQueryObject query)
         {
             var stocks = _context.Stocks.Include(c => c.Comments).ThenInclude(a => a.AppUser).AsQueryable();
 

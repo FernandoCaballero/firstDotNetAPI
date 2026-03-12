@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using FirstApi.Dtos.Comment;
 using FirstApi.Extensions;
+using FirstApi.Helpers;
 using FirstApi.Interfaces;
 using FirstApi.Mappers;
 using FirstApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,12 +35,13 @@ namespace FirstApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize]
+        public async Task<IActionResult> GetAll([FromQuery] CommentQueryObject queryObj)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var comments = await _commentRepository.GetAllAsync();
+            var comments = await _commentRepository.GetAllAsync(queryObj);
 
             var commentsDto = comments.Select(s => s.ToCommentDto());
 

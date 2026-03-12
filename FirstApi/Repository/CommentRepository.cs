@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FirstApi.Data;
+using FirstApi.Helpers;
 using FirstApi.Interfaces;
 using FirstApi.Mappers;
 using FirstApi.Models;
@@ -42,9 +43,21 @@ namespace FirstApi.Repository
             return comment;
         }
 
-        public async Task<List<Comment>> GetAllAsync()
+        public async Task<List<Comment>> GetAllAsync(CommentQueryObject queryObj)
         {
-            return await _context.Comments.Include(a => a.AppUser).ToListAsync();
+            var comments = _context.Comments.Include(a => a.AppUser).AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(queryObj.Symbol))
+            {
+                comments = comments.Where(s => s.Stock.Symbol == queryObj.Symbol);
+            }
+
+            if(queryObj.IsDecending)
+            {
+                comments = comments.OrderByDescending(c => c.CreatedOn);
+            }
+
+            return await comments.ToListAsync();
         }
 
         public async Task<Comment?> GetByIdAsync(int id)
