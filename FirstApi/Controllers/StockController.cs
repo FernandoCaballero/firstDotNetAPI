@@ -26,7 +26,6 @@ namespace FirstApi.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult> GetAll([FromQuery] StockQueryObject queryObj)
         {
             if(!ModelState.IsValid)
