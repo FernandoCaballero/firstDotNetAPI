@@ -44,9 +44,9 @@ namespace FirstApi.Mappers
                 Symbol = fmpStock.Symbol,
                 CompanyName = fmpStock.CompanyName,
                 Purchase = (decimal)fmpStock.Price,
-                LastDividend = (decimal)fmpStock.LastDiv,
+                LastDividend = fmpStock.lastDividend,
                 Industry = fmpStock.Industry,
-                MarketCap = fmpStock.MktCap
+                MarketCap = fmpStock.MarketCap
             };
         }
     }

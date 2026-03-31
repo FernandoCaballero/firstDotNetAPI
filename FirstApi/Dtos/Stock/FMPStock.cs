@@ -11,8 +11,8 @@ namespace FirstApi.Dtos.Stock
         public double Price { get; set; }
         public double Beta { get; set; }
         public int VolAvg { get; set; }
-        public long MktCap { get; set; }
-        public int LastDiv { get; set; }
+        public long MarketCap { get; set; }
+        public decimal lastDividend { get; set; }
         public string Range { get; set; }
         public double Changes { get; set; }
         public string CompanyName { get; set; }

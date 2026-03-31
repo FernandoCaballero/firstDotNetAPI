@@ -24,7 +24,7 @@ namespace FirstApi.Services
         {
             try
             {
-                var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={_config["FMPKey"]}");
+                var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/stable/profile?symbol={symbol}&apikey={_config["FMPKey"]}");
                 
                 if(result.IsSuccessStatusCode)
                 {
